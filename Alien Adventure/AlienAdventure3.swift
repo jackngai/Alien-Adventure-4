@@ -40,7 +40,7 @@ extension UDRequestTester {
                 typesFulfilled1.append(badge.requestType)
             }
             if !delegate.handleCheckBadges(badgeManager.badges, requestTypes: typesToCheck1) {
-                print("CheckBadges FAILED: If badges for are present \(typesFulfilled1) when checking for \(typesToCheck1), then the check should pass.")
+                print("CheckBadges 1 FAILED: If badges for are present \(typesFulfilled1) when checking for \(typesToCheck1), then the check should pass.")
                 return false
             }
             
@@ -48,7 +48,7 @@ extension UDRequestTester {
             let typesToCheck2: [UDRequestType] = [.BasicCheck, .BasicCheck, .AdvancedCheck, .ExpertCheck]
             let typesFulfilled2: [UDRequestType] = [.BasicCheck]
             if delegate.handleCheckBadges([Badge(requestType: .BasicCheck)], requestTypes: typesToCheck2) {
-                print("CheckBadges FAILED: If badges for are present \(typesFulfilled2) when checking for \(typesToCheck2), then the check should not pass.")
+                print("CheckBadges 2 FAILED: If badges for are present \(typesFulfilled2) when checking for \(typesToCheck2), then the check should not pass.")
                 return false
             }
             
@@ -56,7 +56,7 @@ extension UDRequestTester {
             let typesToCheck3: [UDRequestType] = [.BasicCheck, .ShuffleStrings]
             let typesFulfilled3: [UDRequestType] = [.BasicCheck, .ShuffleStrings, .MostCommonCharacter]
             if !delegate.handleCheckBadges([Badge(requestType: .BasicCheck), SpecialBadge(requestType: .ShuffleStrings), Badge(requestType: .MostCommonCharacter)], requestTypes: typesToCheck3) {
-                print("CheckBadges FAILED: If badges for are present \(typesFulfilled3) when checking for \(typesToCheck3), then the check should pass.")
+                print("CheckBadges 3 FAILED: If badges for are present \(typesFulfilled3) when checking for \(typesToCheck3), then the check should pass.")
                 return false
             }
             
@@ -64,7 +64,7 @@ extension UDRequestTester {
             let typesToCheck4 = [UDRequestType]()
             let typesFulfilled4: [UDRequestType] = [.BasicCheck, .ShuffleStrings, .MostCommonCharacter]
             if !delegate.handleCheckBadges([Badge(requestType: .BasicCheck), SpecialBadge(requestType: .ShuffleStrings), Badge(requestType: .MostCommonCharacter)], requestTypes: typesToCheck4) {
-                print("CheckBadges FAILED: If badges for are present \(typesFulfilled4) when checking for \(typesToCheck4), then the check should pass.")
+                print("CheckBadges 4 FAILED: If badges for are present \(typesFulfilled4) when checking for \(typesToCheck4), then the check should pass.")
                 return false
             }
             
@@ -72,7 +72,7 @@ extension UDRequestTester {
             let typesToCheck5: [UDRequestType] = [.BasicCheck, .ShuffleStrings]
             let typesFulfilled5 = [UDRequestType]()
             if delegate.handleCheckBadges([Badge](), requestTypes: typesToCheck5) {
-                print("CheckBadges FAILED: If badges for are present \(typesFulfilled5) when checking for \(typesToCheck5), then the check should not pass.")
+                print("CheckBadges 5 FAILED: If badges for are present \(typesFulfilled5) when checking for \(typesToCheck5), then the check should not pass.")
                 return false
             }
         } else {
