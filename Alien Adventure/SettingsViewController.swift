@@ -45,35 +45,18 @@ class SettingsViewController: UIViewController {
         print("adding targets!")
         levelSegmentedControl.addTarget(self, action: #selector(SettingsViewController.switchLevel(_:)), forControlEvents: .ValueChanged)
         startGameButton.addTarget(self, action: #selector(SettingsViewController.startGame), forControlEvents: .TouchUpInside)
-        showBadgesSwitch.addTarget(self, action: #selector(SettingsViewController.showBadges(_:)), forControlEvents: .TouchUpInside)
+        showBadgesSwitch.addTarget(self, action: #selector(SettingsViewController.showBadges(_:)), forControlEvents: .ValueChanged)
         
     }
     
     // MARK: Implementing Actions
     
     func switchLevel(segmentControl: UISegmentedControl) {
-        switch segmentControl.selectedSegmentIndex{
-        case 0:
-            Settings.Common.Level = 0
-        case 1:
-            Settings.Common.Level = 1
-        case 2:
-            Settings.Common.Level = 2
-        case 3:
-            Settings.Common.Level = 3
-        default:
-            Settings.Common.Level = 0
-        }
-        
-
+        Settings.Common.Level = segmentControl.selectedSegmentIndex
     }
     
     func showBadges(switchControl: UISwitch) {
-        if switchControl.on{
-            Settings.Common.ShowBadges = true
-        } else {
-            Settings.Common.ShowBadges = false
-        }
+        Settings.Common.ShowBadges = switchControl.on
     }
     
     func startGame() {
