@@ -8,8 +8,19 @@
 
 extension Hero {
     
-    func removeDuplicates(inventory: [UDItem]) -> [UDItem] {        
-        return [UDItem]()
+    func removeDuplicates(inventory: [UDItem]) -> [UDItem] {
+        let sortedInventory = sortLeastToGreatest(inventory)
+        var uniqueInventory = [UDItem]()
+        var index = 0
+        while index < sortedInventory.count - 1 {
+            if sortedInventory[index] != sortedInventory[index + 1]{
+                uniqueInventory.append(sortedInventory[index])
+            }
+            index += 1
+        }
+        if uniqueInventory.last != sortedInventory.last{
+            uniqueInventory.append(sortedInventory.last!)
+        }
+        return uniqueInventory
     }
-    
 }
